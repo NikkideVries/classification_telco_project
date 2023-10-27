@@ -3,5 +3,4 @@ env.py
 .ipynb_checkpoints/
 .virtual_documents
 __pycache__
-*.csv
 *.xlsx
