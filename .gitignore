@@ -4,3 +4,5 @@ env.py
 .virtual_documents
 __pycache__
 *.xlsx
+testing.py
+
