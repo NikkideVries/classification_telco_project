@@ -247,7 +247,7 @@ def visualize_univariate_cat_final(train):
     '''
     data visualization for final notebook of specific categorical columns. data is univariate
     '''
-    cat_cols = ['senior_citizen', 'contract_type', 'internet_service_type', 'payment_type', 'churn', 'dependents']
+    cat_cols = ['senior_citizen', 'contract_type', 'internet_service_type', 'payment_type']
     
     # Define the number of rows and columns for subplots
     num_cols = 2
@@ -319,7 +319,6 @@ def create_subplots_barplots_categorical_vs_target(data, target, num_cols_per_ro
         ax.axhline(overall_rate, ls='--', color='black')
 
     plt.tight_layout()
-    plt.show()
 
    
 
