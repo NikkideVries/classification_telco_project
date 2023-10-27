@@ -165,11 +165,25 @@ This project is to evaluate why customers are leaving Telco. Are they a bad comp
         - $H_a$: Internet type and churn are dependent on each other. <br>
         - Answer: We reject the null hypothesis: Internet type and churn are independent of each other. Therefore, Internet type and churn are dependent on each other.
         
-### Recommendations:
-Based on everything I looked at I would recommend:<br><br>
-    - Figuring out a way to make services such as streaming more desirable. They could lead to even more profit.<br>
-    - Looking at making services such as online protection and tech support more available or more advertising.<br> 
-Based on churn:<br>
-    - Talk to senior citizens and discuss methods that could make options to stay at telco easier. Maybe they are getting overwhelmed by technology or don't understand how to properly work with the services provided by Telco.<br>
-    - Try lowering the cost of Fiber, it may be to expensive month to month which is why people may be churning. <br>
-    - Advertise the other contracts with incentives or deals to make them more appeling to lower the amount of customers that use month-to-month service.<br>
+### Summary: 
+- How often do people churn: Not often, in the data about 73 percent of customer do not churn.
+- Is churn impacted by type of service: Fiber churns more often compared to other.
+- Is churn impacted by finalnical features: Churn is mostly impacted by montly charges compared to tenure and total charges.
+- Interesting things found in the data: Services are not utilized often.
+    
+    
+### Recomendations: 
+- Figuring out a way to make services such as streaming more desirable. They could lead to even more profit. 
+- Looking at making servcies such as online protection, and tech support, more avaliable or more advertising.
+- Talk to senior citizens and disccuss methods that could make options to stay at telco easier. Maybe they are getting overwhelmed by tecnology or don't understand how to properly work with the services provided by Telco.<br>
+- Try lowering the cost of Fiber, it may be to expensive month to month which is why people may be churning. 
+- Advertise the other contracts with incentives or deals to make them more appeling to lower the amount of customers that use month to month service.<br>
+
+
+### Next steps:
+- Improving functions to make work flow smoother
+- Try to combinded functions
+- Look a combined varibles in hypothesis testing
+- Senior Citizen: How old are these individuals? Can we make an age column
+ - What do streaming services provide? Why do customers decline?
+- Take more time to look at the data and make new features.

@@ -406,95 +406,13 @@ def train_validate_test(df):
     train, validate = train_test_split(train_validate, train_size=0.7, random_state=3210, stratify=train_validate.churn)
     return train, validate, test
 
-#create dummy columns:
-def preprocess_telco(train, val, test):
-    
-    '''
-    This function will create dummy columns for categorical varibales in the train, val, and test
-    '''
-    
-    
-    dummies_train_list = []
-    dummies_val_list = []
-    dummies_test_list = []
-    cat_cols = ['gender',
-                'senior_citizen',
-                'partner',
-                'dependents',
-                'phone_service',
-                'multiple_lines',
-                'online_security',
-                'online_backup',
-                'device_protection',
-                'tech_support',
-                'streaming_tv',
-                'streaming_movies',
-                'paperless_billing',
-                'contract_type',
-                'internet_service_type',
-                'payment_type']
-    for col in cat_cols:
-        dummies_train = pd.get_dummies(train[col], prefix=col, drop_first=True)
-        dummies_train_list.append(dummies_train)
-        dummies_val = pd.get_dummies(val[col], prefix=col, drop_first=True)
-        dummies_val_list.append(dummies_val)
-        dummies_test = pd.get_dummies(test[col], prefix=col, drop_first=True)
-        dummies_test_list.append(dummies_test)
-    
-    train = pd.concat([train] + dummies_train_list, axis = 1)
-   
 
-    val = pd.concat([val]+ dummies_val_list, axis = 1)
-    
-
-    test = pd.concat([test]+ dummies_test_list, axis =1)
-    
-
-
-def prep_telco_data(df):
-    """
-    used to clean data for modeling
-    """
-    # Drop duplicate columns
-    df.drop(columns=['payment_type_id', 'internet_service_type_id', 'contract_type_id', 'customer_id'], inplace=True)
-       
-    # Drop null values stored as whitespace    
-    df['total_charges'] = df['total_charges'].str.strip()
-    df = df[df.total_charges != '']
-    
-    # Convert to correct datatype
-    df['total_charges'] = df.total_charges.astype(float)
-    
-    # Convert binary categorical variables to numeric
-    df['gender_encoded'] = df.gender.map({'Female': 1, 'Male': 0})
-    df['partner_encoded'] = df.partner.map({'Yes': 1, 'No': 0})
-    df['dependents_encoded'] = df.dependents.map({'Yes': 1, 'No': 0})
-    df['phone_service_encoded'] = df.phone_service.map({'Yes': 1, 'No': 0})
-    df['paperless_billing_encoded'] = df.paperless_billing.map({'Yes': 1, 'No': 0})
-    df['churn_encoded'] = df.churn.map({'Yes': 1, 'No': 0})
-    
-    # Get dummies for non-binary categorical variables
-    dummy_df = pd.get_dummies(df[['multiple_lines', \
-                              'online_security', \
-                              'online_backup', \
-                              'device_protection', \
-                              'tech_support', \
-                              'streaming_tv', \
-                              'streaming_movies', \
-                              'contract_type', \
-                              'internet_service_type', \
-                              'payment_type']], dummy_na=False, \
-                              drop_first=True)
-    
-    # Concatenate dummy dataframe to original 
-    df = pd.concat([df, dummy_df], axis=1)
-    
-    # split the data
-    train, validate, test = train_validate_test()
-    
-    return train, validate, test
   
 def drop_columns(train, val, test):
+    '''
+    This function will drop duplicate columns that we do not need for modeling
+    '''
+    
     train.set_index('customer_id', inplace=True)
     
     
@@ -529,7 +447,7 @@ def drop_columns(train, val, test):
 #---------------------------------------------------#
 def get_metrics(mod, X, y, df):
     '''
-    this functio will print out the metrics of a model
+    this function will print out the metrics of a model
     '''
     baseline_accuracy = (df.did_churn == 0).mean()
     y_pred = mod.predict(X)
